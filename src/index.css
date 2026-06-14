@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  
+  --color-background: var(--background);
+  --color-on-background: var(--on-background);
+  
+  --color-surface: var(--surface);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  
+  --color-outline: var(--outline);
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --spacing-margin-mobile: 24px;
+  --spacing-gutter: 32px;
+  --spacing-section-gap-lg: 160px;
+  --spacing-container-max: 1200px;
+  --spacing-stack-md: 16px;
+  --spacing-stack-sm: 8px;
+  --spacing-section-gap-md: 80px;
+  --spacing-stack-lg: 32px;
+
+  /* Fonts */
+  --font-body-lg: "Inter", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+  --font-display-xl: "Plus Jakarta Sans", sans-serif;
+  --font-display-xl-mobile: "Plus Jakarta Sans", sans-serif;
+  --font-headline-lg: "Plus Jakarta Sans", sans-serif;
+  --font-label-caps: "Inter", sans-serif;
+  --font-headline-md: "Plus Jakarta Sans", sans-serif;
+
+  /* Text Sizes & Line Heights mapped cleanly */
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.6;
+
+  --text-display-xl: 80px;
+  --text-display-xl--line-height: 1.05;
+  --text-display-xl--letter-spacing: -0.03em;
+
+  --text-display-xl-mobile: 48px;
+  --text-display-xl-mobile--line-height: 1.1;
+  --text-display-xl-mobile--letter-spacing: -0.02em;
+
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 1.1;
+  --text-headline-lg--letter-spacing: -0.02em;
+
+  --text-label-caps: 13px;
+  --text-label-caps--line-height: 1.2;
+  --text-label-caps--letter-spacing: 0.1em;
+
+  --text-headline-md: 32px;
+  --text-headline-md--line-height: 1.2;
+}
+
+@layer base {
+  :root {
+    --primary: #FF5A00;
+    --on-primary: #ffffff;
+    
+    --secondary: #FF823A;
+    --on-secondary: #000000;
+    
+    --tertiary: #FFA977;
+    --on-tertiary: #000000;
+    
+    --background: #ffffff;
+    --on-background: #0f0f0f;
+    
+    --surface: #fafafa;
+    --on-surface: #0f0f0f;
+    --on-surface-variant: #555555;
+    
+    --surface-container: #f5f5f5;
+    --surface-container-low: #ebebeb;
+    --surface-container-lowest: #ffffff;
+    
+    --outline: #e0e0e0;
+    
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(0, 0, 0, 0.05);
+  }
+  
+  :root.dark {
+    --primary: #FF6A1A;
+    --on-primary: #ffffff;
+    
+    --secondary: #FF8C45;
+    --on-secondary: #ffffff;
+    
+    --tertiary: #FFAD7A;
+    --on-tertiary: #000000;
+    
+    --background: #050505;
+    --on-background: #fdfdfd;
+    
+    --surface: #0f0f0f;
+    --on-surface: #fdfdfd;
+    --on-surface-variant: #a1a1a6;
+    
+    --surface-container: #141414;
+    --surface-container-low: #1c1c1c;
+    --surface-container-lowest: #050505;
+    
+    --outline: #262626;
+    
+    --glass-bg: rgba(20, 20, 20, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    @apply bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary selection:text-on-primary transition-colors duration-500;
+  }
+}
+
+@layer utilities {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  .material-symbols-outlined.fill {
+     font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+  }
+  
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .animate-ray-1 {
+    animation: ray-pulse 8s ease-in-out infinite alternate;
+  }
+  
+  .animate-ray-2 {
+    animation: ray-pulse 6s ease-in-out infinite alternate-reverse;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes ray-pulse {
+  0% { opacity: 0.6; transform: scale(1) rotate(15deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(16deg); }
+  100% { opacity: 0.6; transform: scale(1) rotate(15deg); }
+}
