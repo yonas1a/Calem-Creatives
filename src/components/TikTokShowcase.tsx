@@ -26,7 +26,7 @@ function VideoCard({ video }: { video: VideoItem }) {
 
   return (
     <div
-      className="relative w-[260px] sm:w-[300px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-xl hover:shadow-primary/40 hover:-translate-y-4 hover:scale-[1.03] transition-all duration-500 group shrink-0 cursor-pointer"
+      className="relative w-[220px] sm:w-[280px] aspect-[9/16] rounded-2xl sm:rounded-[2rem] overflow-hidden shadow-xl hover:shadow-primary/40 hover:-translate-y-4 hover:scale-[1.03] transition-all duration-500 group shrink-0 cursor-pointer"
       onMouseEnter={() => {
         if (videoRef.current) {
           videoRef.current.currentTime = 0; // Restart video from the beginning
@@ -60,21 +60,21 @@ function VideoCard({ video }: { video: VideoItem }) {
       />
 
       {/* Bottom Overlay Info (Frosted Glass) */}
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent p-5 pt-16 flex flex-col justify-end opacity-90 group-hover:opacity-100 transition-all duration-300">
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white/90 via-white/40 dark:from-black/90 dark:via-black/40 to-transparent p-4 sm:p-5 pt-12 sm:pt-16 flex flex-col justify-end opacity-90 group-hover:opacity-100 transition-all duration-300">
         <div className="flex items-center justify-between">
           {/* Left: Company Logo */}
           <div className="flex items-center">
-            <img src={video.logoUrl} alt="Company Logo" className="h-6 w-auto object-contain drop-shadow-md" />
+            <img src={video.logoUrl} alt="Company Logo" className="h-5 sm:h-6 w-auto object-contain drop-shadow-md dark:invert dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
           </div>
 
           {/* Right: Metrics */}
-          <div className="flex items-center gap-3 text-white text-xs font-bold drop-shadow-md">
-            <div className="flex items-center gap-1 bg-black/30 backdrop-blur-md px-2 py-1 rounded-full border border-white/10">
-              <span className="material-symbols-outlined text-[14px] text-emerald-400">visibility</span>
+          <div className="flex items-center gap-1 sm:gap-2 text-white text-[9px] sm:text-[10px] font-bold drop-shadow-md">
+            <div className="flex items-center gap-0.5 sm:gap-1 bg-white/20 backdrop-blur-md px-1 sm:px-1.5 py-0.5 rounded-full border border-white/20">
+              <span className="material-symbols-outlined text-[11px] sm:text-[12px] text-emerald-400">visibility</span>
               <span>{video.views}</span>
             </div>
-            <div className="flex items-center gap-1 bg-black/30 backdrop-blur-md px-2 py-1 rounded-full border border-white/10">
-              <span className="material-symbols-outlined text-[14px] text-rose-500">favorite</span>
+            <div className="flex items-center gap-0.5 sm:gap-1 bg-white/20 backdrop-blur-md px-1 sm:px-1.5 py-0.5 rounded-full border border-white/20">
+              <span className="material-symbols-outlined text-[11px] sm:text-[12px] text-rose-400">favorite</span>
               <span>{video.likes}</span>
             </div>
           </div>
@@ -82,35 +82,40 @@ function VideoCard({ video }: { video: VideoItem }) {
       </div>
 
       {/* Subtle interactive hover lens */}
-      <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/50 rounded-[2rem] transition-colors duration-300 pointer-events-none" />
+      <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/50 rounded-2xl sm:rounded-[2rem] transition-colors duration-300 pointer-events-none" />
     </div>
   );
 }
 
 export function TikTokShowcase() {
   return (
-    <section className="py-20 md:py-0 bg-surface overflow-hidden relative border-y border-outline/30" id="showcase">
+    <section className="py-16 sm:py-20 md:py-28 bg-surface overflow-hidden relative border-y border-outline/30" id="showcase">
       <style>{`
         @keyframes ticker-slide {
           0% { transform: translateX(0); }
           100% { transform: translateX(-33.3333%); }
         }
         .ticker-track {
-          animation: ticker-slide 50s linear infinite;
+          animation: ticker-slide 35s linear infinite;
+        }
+        @media (min-width: 640px) {
+          .ticker-track {
+            animation: ticker-slide 50s linear infinite;
+          }
         }
         .ticker-wrapper:hover .ticker-track {
           animation-play-state: paused;
         }
       `}</style>
       {/* Visual background atmospheric lights (deep ambient indigo/cyan and orange) */}
-      <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-primary/10 rounded-full blur-[100px] sm:blur-[120px] pointer-events-none" />
+      <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-amber-500/10 rounded-full blur-[100px] sm:blur-[120px] pointer-events-none" />
 
-      <div className="max-w-container-max mx-auto px-margin-mobile relative z-10 text-center mb-12 sm:mb-16">
+      <div className="max-w-container-max mx-auto px-margin-mobile relative z-10 text-center mb-10 sm:mb-16">
         <Reveal>
           <span className="text-xs font-bold text-primary tracking-[0.3em] uppercase block mb-3">CREATIVE FEED</span>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Trending Portfolio Showcase</h2>
-          <p className="text-on-surface-variant max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
+          <p className="text-on-surface-variant max-w-xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed">
             Glance over real performance assets engineered for viral retention. Hover a card to pause the feed and watch.
           </p>
         </Reveal>
@@ -125,7 +130,7 @@ export function TikTokShowcase() {
 
         {/* Outer scrolling track */}
         <div className="w-full overflow-hidden py-4 ticker-wrapper">
-          <div className="flex gap-6 w-max px-4 ticker-track mt-5">
+          <div className="flex gap-4 sm:gap-6 w-max px-4 ticker-track mt-2 sm:mt-5">
             {sliderVideos.map((video, idx) => (
               <VideoCard key={`${video.id}-${idx}`} video={video} />
             ))}

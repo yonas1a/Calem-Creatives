@@ -31,7 +31,7 @@
   --radius-full: 9999px;
 
   /* Spacing */
-  --spacing-margin-mobile: 24px;
+  --spacing-margin-mobile: 20px;
   --spacing-gutter: 32px;
   --spacing-section-gap-lg: 160px;
   --spacing-container-max: 1200px;
@@ -87,21 +87,21 @@
     --tertiary: #FFA977;
     --on-tertiary: #000000;
     
-    --background: #ffffff;
-    --on-background: #0f0f0f;
+    --background: #fafafa;
+    --on-background: #0a0a0a;
     
-    --surface: #fafafa;
-    --on-surface: #0f0f0f;
-    --on-surface-variant: #555555;
+    --surface: #f5f5f5;
+    --on-surface: #0a0a0a;
+    --on-surface-variant: #5a5a5a;
     
-    --surface-container: #f5f5f5;
-    --surface-container-low: #ebebeb;
+    --surface-container: #eeeeee;
+    --surface-container-low: #f0f0f0;
     --surface-container-lowest: #ffffff;
     
-    --outline: #e0e0e0;
+    --outline: #d4d4d4;
     
-    --glass-bg: rgba(255, 255, 255, 0.4);
-    --glass-border: rgba(0, 0, 0, 0.05);
+    --glass-bg: rgba(255, 255, 255, 0.55);
+    --glass-border: rgba(0, 0, 0, 0.06);
   }
   
   :root.dark {
@@ -114,25 +114,31 @@
     --tertiary: #FFAD7A;
     --on-tertiary: #000000;
     
-    --background: #050505;
-    --on-background: #fdfdfd;
+    --background: #030303;
+    --on-background: #f5f5f5;
     
-    --surface: #0f0f0f;
-    --on-surface: #fdfdfd;
-    --on-surface-variant: #a1a1a6;
+    --surface: #0c0c0c;
+    --on-surface: #f5f5f5;
+    --on-surface-variant: #9a9a9f;
     
-    --surface-container: #141414;
-    --surface-container-low: #1c1c1c;
-    --surface-container-lowest: #050505;
+    --surface-container: #111111;
+    --surface-container-low: #171717;
+    --surface-container-lowest: #030303;
     
-    --outline: #262626;
+    --outline: #222222;
     
-    --glass-bg: rgba(20, 20, 20, 0.4);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(14, 14, 14, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.06);
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
     @apply bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary selection:text-on-primary transition-colors duration-500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -163,6 +169,56 @@
   .animate-ray-2 {
     animation: ray-pulse 6s ease-in-out infinite alternate-reverse;
   }
+
+  .animate-shimmer {
+    animation: shimmer 2.5s ease-in-out infinite;
+    background-size: 200% 100%;
+  }
+
+  .animate-gradient-text {
+    background-size: 300% 300%;
+    animation: gradient-flow 6s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite;
+  }
+
+  .noise-overlay {
+    position: relative;
+  }
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.015;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--outline);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
 }
 
 @keyframes float {
@@ -174,4 +230,38 @@
   0% { opacity: 0.6; transform: scale(1) rotate(15deg); }
   50% { opacity: 1; transform: scale(1.1) rotate(16deg); }
   100% { opacity: 0.6; transform: scale(1) rotate(15deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(255, 106, 26, 0.15), 0 0 60px rgba(255, 106, 26, 0.05);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(255, 106, 26, 0.3), 0 0 80px rgba(255, 106, 26, 0.1);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes counter-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-counter-pulse {
+  animation: counter-pulse 2s ease-in-out infinite;
 }
