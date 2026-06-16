@@ -72,6 +72,7 @@ export function Benefits() {
                 <motion.button 
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
+                  onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
                   className="bg-primary text-on-primary font-semibold px-8 py-4 text-[15px] sm:text-[17px] rounded-xl hover:shadow-[0_0_30px_color-mix(in_srgb,var(--color-primary)_40%,transparent)] transition-all duration-300 shadow-lg"
                 >
                     Ready to Level Up? Get Started

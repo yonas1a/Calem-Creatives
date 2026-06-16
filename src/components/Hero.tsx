@@ -11,20 +11,26 @@ function useAnimatedCounter(target: number, duration: number = 2000, startOnView
 
   useEffect(() => {
     if (startOnView && !isInView) return;
-    if (hasAnimated.current) return;
-    hasAnimated.current = true;
-
+    
+    let animationFrameId: number;
     const startTime = performance.now();
+    
     const animate = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       // Ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(animate);
-      else setCount(target);
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+      }
     };
-    requestAnimationFrame(animate);
+    
+    animationFrameId = requestAnimationFrame(animate);
+    
+    return () => cancelAnimationFrame(animationFrameId);
   }, [isInView, target, duration, startOnView]);
 
   return { count, ref };
@@ -39,8 +45,8 @@ function formatCount(num: number): string {
 /* ─── Social Stats Strip ─── */
 function SocialStats() {
   // Placeholder counts — replace with real API data when backend is ready
-  const tiktok = useAnimatedCounter(892400, 2500);
-  const instagram = useAnimatedCounter(245800, 2500);
+  const tiktok = useAnimatedCounter(1200000, 2500);
+  const instagram = useAnimatedCounter(57000, 2500);
 
   return (
     <div ref={tiktok.ref} className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 mt-10">
@@ -138,6 +144,7 @@ export function Hero() {
               <motion.button 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
+                onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
                 className="w-full sm:w-auto bg-primary text-on-primary font-semibold px-7 py-3.5 sm:px-8 sm:py-4 rounded-xl hover:shadow-[0_0_35px_color-mix(in_srgb,var(--color-primary)_40%,transparent)] border border-transparent transition-all duration-300 text-[15px] sm:text-[17px]"
               >
                 Get Started Now
@@ -145,6 +152,7 @@ export function Hero() {
               <motion.button 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
+                onClick={() => document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth' })}
                 className="w-full sm:w-auto bg-transparent text-on-background font-semibold px-7 py-3.5 sm:px-8 sm:py-4 rounded-xl hover:bg-surface-container border border-outline/40 transition-all duration-300 text-[15px] sm:text-[17px]"
               >
                 Book a Consultation

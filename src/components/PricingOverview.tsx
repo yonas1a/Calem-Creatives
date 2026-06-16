@@ -17,7 +17,7 @@ export function PricingOverview() {
   };
 
   return (
-    <section className="py-16 sm:py-20 md:py-28 lg:py-32 px-margin-mobile bg-surface-container-low relative overflow-hidden" id="overview">
+    <section className="py-16 sm:py-20 md:py-28 lg:py-32 px-margin-mobile bg-surface-container-low relative overflow-hidden" id="pricing">
       {/* Dynamic Background Blurry Orange Lights */}
       <motion.div
         animate={{

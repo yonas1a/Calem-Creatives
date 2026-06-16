@@ -6,7 +6,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Overview', href: '#overview' },
+    { label: 'Overview', href: '#pricing' },
     { label: 'Showcase', href: '#showcase' },
     { label: 'Deliverables', href: '#deliverables' },
     { label: 'Benefits', href: '#benefits' },
@@ -40,7 +40,7 @@ export function Navbar() {
         
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <button className="bg-primary text-on-primary font-semibold px-5 py-2.5 rounded-xl hover:shadow-[0_0_25px_color-mix(in_srgb,var(--color-primary)_35%,transparent)] transition-all duration-300 active:scale-95 hidden sm:block text-sm">
+          <button onClick={() => document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth' })} className="bg-primary text-on-primary font-semibold px-5 py-2.5 rounded-xl hover:shadow-[0_0_25px_color-mix(in_srgb,var(--color-primary)_35%,transparent)] transition-all duration-300 active:scale-95 hidden sm:block text-sm">
             Book a Consultation
           </button>
 
@@ -95,6 +95,10 @@ export function Navbar() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.07, duration: 0.3 }}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="bg-primary text-on-primary font-semibold py-3.5 px-6 rounded-xl text-base hover:shadow-[0_0_25px_color-mix(in_srgb,var(--color-primary)_35%,transparent)] transition-all duration-300 active:scale-95 mt-1"
               >
                 Book a Consultation

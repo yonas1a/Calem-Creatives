@@ -4,6 +4,7 @@ import { TikTokShowcase } from './components/TikTokShowcase';
 import { PricingOverview } from './components/PricingOverview';
 import { Deliverables } from './components/Deliverables';
 import { Benefits } from './components/Benefits';
+import { BookConsultation } from './components/BookConsultation';
 import { Footer } from './components/Footer';
 import { CursorGlow } from './components/CursorGlow';
 
@@ -18,6 +19,7 @@ export default function App() {
         <PricingOverview />
         <Deliverables />
         <Benefits />
+        <BookConsultation />
       </main>
       <Footer />
     </>
