@@ -173,14 +173,8 @@ export function PricingOverview() {
                     <span className="text-4xl sm:text-[2.75rem] md:text-5xl font-extrabold text-primary tracking-tighter leading-none mb-1 drop-shadow-[0_0_20px_rgba(255,106,26,0.35)]">
                       179,400
                     </span>
-                    <span className="text-base sm:text-lg font-bold text-primary uppercase tracking-[0.1em]">Birr</span>
+                    <span className="text-base sm:text-lg font-bold text-primary uppercase tracking-[0.1em]">Birr / Month</span>
                   </div>
-
-                  <div className="h-px bg-outline/40 w-full my-5 sm:my-6" />
-
-                  <span className="text-[10px] sm:text-[11px] font-semibold text-on-surface-variant/90 leading-normal max-w-[200px]">
-                    Monthly Payments of <strong className="text-on-background font-bold text-xs block mt-1">59,800 Birr / Mo</strong>
-                  </span>
                 </div>
               </motion.div>
             </Reveal>

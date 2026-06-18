@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-primary: var(--primary);
   --color-on-primary: var(--on-primary);
@@ -78,13 +80,13 @@
 
 @layer base {
   :root {
-    --primary: #FF5A00;
+    --primary: #e03403;
     --on-primary: #ffffff;
     
-    --secondary: #FF823A;
+    --secondary: #f05a2e;
     --on-secondary: #000000;
     
-    --tertiary: #FFA977;
+    --tertiary: #f58a6a;
     --on-tertiary: #000000;
     
     --background: #fafafa;
@@ -105,13 +107,13 @@
   }
   
   :root.dark {
-    --primary: #FF6A1A;
+    --primary: #e84420;
     --on-primary: #ffffff;
     
-    --secondary: #FF8C45;
+    --secondary: #f26840;
     --on-secondary: #ffffff;
     
-    --tertiary: #FFAD7A;
+    --tertiary: #f79a80;
     --on-tertiary: #000000;
     
     --background: #030303;
@@ -245,10 +247,10 @@
 
 @keyframes pulse-glow {
   0%, 100% { 
-    box-shadow: 0 0 20px rgba(255, 106, 26, 0.15), 0 0 60px rgba(255, 106, 26, 0.05);
+    box-shadow: 0 0 20px rgba(224, 52, 3, 0.15), 0 0 60px rgba(224, 52, 3, 0.05);
   }
   50% { 
-    box-shadow: 0 0 30px rgba(255, 106, 26, 0.3), 0 0 80px rgba(255, 106, 26, 0.1);
+    box-shadow: 0 0 30px rgba(224, 52, 3, 0.3), 0 0 80px rgba(224, 52, 3, 0.1);
   }
 }
 

@@ -46,7 +46,7 @@ function formatCount(num: number): string {
 function SocialStats() {
   // Placeholder counts — replace with real API data when backend is ready
   const tiktok = useAnimatedCounter(1200000, 2500);
-  const instagram = useAnimatedCounter(57000, 2500);
+  const instagram = useAnimatedCounter(57100, 2500);
 
   return (
     <div ref={tiktok.ref} className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 mt-10">
@@ -57,7 +57,7 @@ function SocialStats() {
         rel="noopener noreferrer"
         whileHover={{ scale: 1.04, y: -2 }}
         whileTap={{ scale: 0.97 }}
-        className="flex items-center gap-3 bg-surface-container/60 backdrop-blur-md border border-outline/20 rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 cursor-pointer group hover:border-primary/30 transition-all duration-300 hover:shadow-lg"
+        className="flex items-center gap-3 bg-surface-container/60 backdrop-blur-md border border-outline/20 rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 cursor-pointer group hover:border-primary/30 transition-all duration-300 hover:shadow-lg min-w-[160px] sm:min-w-[185px]"
       >
         <div className="relative">
           <img src="/Asset/tiktok.png" alt="TikTok" className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
@@ -65,7 +65,7 @@ function SocialStats() {
         </div>
         <div className="flex flex-col">
           <span className="text-[11px] text-on-surface-variant font-medium tracking-wide uppercase">TikTok</span>
-          <span className="text-lg sm:text-xl font-bold text-on-background tracking-tight leading-none group-hover:text-primary transition-colors">
+          <span className="text-lg sm:text-xl font-bold text-on-background tracking-tight leading-none group-hover:text-primary transition-colors tabular-nums">
             {formatCount(tiktok.count)}
           </span>
         </div>
@@ -74,12 +74,13 @@ function SocialStats() {
 
       {/* Instagram Stat */}
       <motion.a
+        ref={instagram.ref}
         href="https://www.instagram.com/caleb_mg_"
         target="_blank"
         rel="noopener noreferrer"
         whileHover={{ scale: 1.04, y: -2 }}
         whileTap={{ scale: 0.97 }}
-        className="flex items-center gap-3 bg-surface-container/60 backdrop-blur-md border border-outline/20 rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 cursor-pointer group hover:border-pink-500/30 transition-all duration-300 hover:shadow-lg"
+        className="flex items-center gap-3 bg-surface-container/60 backdrop-blur-md border border-outline/20 rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 cursor-pointer group hover:border-pink-500/30 transition-all duration-300 hover:shadow-lg min-w-[160px] sm:min-w-[185px]"
       >
         <div className="relative">
           <img src="/Asset/instgram.png" alt="Instagram" className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
@@ -87,7 +88,7 @@ function SocialStats() {
         </div>
         <div className="flex flex-col">
           <span className="text-[11px] text-on-surface-variant font-medium tracking-wide uppercase">Instagram</span>
-          <span className="text-lg sm:text-xl font-bold text-on-background tracking-tight leading-none group-hover:text-pink-500 transition-colors">
+          <span className="text-lg sm:text-xl font-bold text-on-background tracking-tight leading-none group-hover:text-pink-500 transition-colors tabular-nums">
             {formatCount(instagram.count)}
           </span>
         </div>
